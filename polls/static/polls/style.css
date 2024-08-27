@@ -3,5 +3,6 @@ li a {
 }
 
 body {
-    background: white url("polls/static/image/background.jpg") no-repeat;
+    background: white url("../image/background.jpg") no-repeat;
+    background-size: cover;
 }
