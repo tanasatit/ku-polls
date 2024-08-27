@@ -8,11 +8,12 @@ This app was created as part of the [Individual Software Process](
 https://cpske.github.io/ISP) course at [Kasetsart University](https://www.ku.ac.th).
 
 ## Installation
- git clone link
- Install requirement `pip install -r requirements.txt`
+ git clone https://github.com/tanasatit/ku-polls.git
+
+Install requirement `pip install -r requirements.txt`
 
 ## Running the Application
-open terminal and enter following command
+Open the terminal and enter following the command
 1. python manage.py migrate
 2. python manage.py loaddata data/polls-v1.json
 3. python manage.py runserver
