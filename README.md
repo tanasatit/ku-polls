@@ -9,11 +9,13 @@ https://cpske.github.io/ISP) course at [Kasetsart University](https://www.ku.ac.
 
 ## Installation
  git clone link
- Install requirement 'pip install -r requirements.txt'
+ Install requirement `pip install -r requirements.txt`
 
 ## Running the Application
-
-To be added.
+open terminal and enter following command
+1. python manage.py migrate
+2. python manage.py loaddata data/polls-v1.json
+3. python manage.py runserver
 
 ## Project Documents
 
