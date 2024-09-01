@@ -11,12 +11,25 @@ from django.utils import timezone
 class Question(models.Model):
     """A poll question."""
     question_text = models.CharField(max_length=200)
-    pub_date = models.DateTimeField('date published')
+    pub_date = models.DateTimeField('date published', default=timezone.now)
+    end_date = models.DateTimeField('date end', null=True, blank=True)
 
     def was_published_recently(self):
         """Check if the question was published within the last day."""
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.pub_date <= now
+
+    def is_published(self):
+        """Return True if the current date-time is on or after the publication date."""
+        now = timezone.localtime()
+        return now >= self.pub_date
+
+    def can_vote(self):
+        """Return True if voting is allowed for this question"""
+        now = timezone.localtime()
+        if self.end_date:
+            return self.pub_date <= now <= self.end_date
+        return now >= self.pub_date
 
     def __str__(self):
         return self.question_text
