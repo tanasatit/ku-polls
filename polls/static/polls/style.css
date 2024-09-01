@@ -6,3 +6,36 @@ body {
     background: white url("../image/background.jpg") no-repeat;
     background-size: cover;
 }
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.results-table th, .results-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.results-table th {
+    background-color: #f2f2f2;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    text-align: center;
+    color: white;
+    background-color: #007BFF; /* Blue background color */
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

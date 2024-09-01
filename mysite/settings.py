@@ -11,22 +11,14 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-1ad)scu9bmf)xvam6a1minmwirgktzy+@lv-p$5dad9xu8w%om'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+SECRET_KEY = config('SECRET_KEY', default='your-default-secret-key')
+DEBUG = config('DEBUG', cast=bool, default=False)
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost').split(',')
+TIME_ZONE = config('TIME_ZONE', default='UTC')
 
 # Application definition
 
@@ -106,7 +98,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = config('TIME_ZONE', default='UTC')
 
 USE_I18N = True
 
@@ -122,3 +114,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

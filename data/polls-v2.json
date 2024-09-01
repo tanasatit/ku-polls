@@ -1,0 +1,110 @@
+[
+{
+  "model": "polls.question",
+  "pk": 3,
+  "fields": {
+    "question_text": "Which app do you use the most on your phone?",
+    "pub_date": "2024-08-25T14:08:06Z",
+    "end_date": "2024-08-31T11:54:20Z"
+  }
+},
+{
+  "model": "polls.question",
+  "pk": 4,
+  "fields": {
+    "question_text": "How do you usually go to university?",
+    "pub_date": "2024-08-25T14:08:06Z",
+    "end_date": "2025-08-25T14:00:00Z"
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 15,
+  "fields": {
+    "question": 4,
+    "choice_text": "Bus",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 16,
+  "fields": {
+    "question": 4,
+    "choice_text": "Train(BTS/MRT)",
+    "votes": 2
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 17,
+  "fields": {
+    "question": 4,
+    "choice_text": "Walking",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 18,
+  "fields": {
+    "question": 4,
+    "choice_text": "Motorcycle",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 19,
+  "fields": {
+    "question": 3,
+    "choice_text": "Social Media",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 20,
+  "fields": {
+    "question": 3,
+    "choice_text": "Entertainment",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 21,
+  "fields": {
+    "question": 3,
+    "choice_text": "Music Streaming",
+    "votes": 2
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 22,
+  "fields": {
+    "question": 3,
+    "choice_text": "Health & Fitness",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 23,
+  "fields": {
+    "question": 3,
+    "choice_text": "News",
+    "votes": 1
+  }
+},
+{
+  "model": "polls.choice",
+  "pk": 24,
+  "fields": {
+    "question": 4,
+    "choice_text": "Car",
+    "votes": 2
+  }
+}
+]
