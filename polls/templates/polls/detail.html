@@ -11,6 +11,6 @@
         {% endfor %}
     </fieldset>
     <input type="submit" value="Vote" class="vote-button">
-    <a href="{% url 'polls:results' question.id %}" class="button">View Results</a>
-    <a href="{% url 'polls:index' %}" class="button">Back to List of Polls</a>
+    <a href="{% url 'polls:results' question.id %}" class="vote-button">View Results</a>
+    <a href="{% url 'polls:index' %}" class="vote-button">Back to List of Polls</a>
 </form>
