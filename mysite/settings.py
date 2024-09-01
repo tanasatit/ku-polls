@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
-
 from pathlib import Path
 from decouple import config
 
@@ -99,7 +98,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = config('TIME_ZONE', default='UTC')
+# TIME_ZONE = config('TIME_ZONE', default='UTC')
 
 USE_I18N = True
 
@@ -115,3 +114,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
