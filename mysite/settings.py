@@ -123,7 +123,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 LOGIN_REDIRECT_URL = 'polls:index'  # after login, show list of polls
-LOGOUT_REDIRECT_URL = '/'       # after logout, return to login page
+LOGOUT_REDIRECT_URL = 'polls:index'
 
 logger = logging.getLogger(__name__)
 logger.critical("A critical problem, such as database error.")
