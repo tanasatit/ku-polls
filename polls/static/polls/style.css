@@ -1,5 +1,5 @@
 li a {
-    color: green;
+    color: #007BFF;
 }
 
 body {
@@ -8,19 +8,27 @@ body {
 }
 
 .results-table {
-    width: 100%;
+    width: 60%; /* Maintain the smaller table width */
+    margin: 20px 0; /* Remove the auto part to align the table to the left */
     border-collapse: collapse;
-    margin: 20px 0;
+    background-color: #f9f9f9; /* Light background color for the table */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Ensure rounded corners apply to the entire table */
 }
 
 .results-table th, .results-table td {
     border: 1px solid #ddd;
-    padding: 8px;
+    padding: 12px; /* Increase padding for better spacing */
     text-align: left;
 }
 
 .results-table th {
-    background-color: #f2f2f2;
+    background-color: #007BFF; /* Blue background for table header */
+    color: white; /* White text for the header */
+}
+
+.results-table td {
+    background-color: #ffffff; /* White background for table cells */
 }
 
 .button {
@@ -34,6 +42,7 @@ body {
     border: none;
     border-radius: 5px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .button:hover {
