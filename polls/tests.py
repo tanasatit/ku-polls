@@ -130,3 +130,97 @@ class QuestionVoteTests(TestCase):
         self.assertFalse(question.can_vote())
 
 
+class UserAuthTest(django.test.TestCase):
+
+    def setUp(self):
+        # superclass setUp creates a Client object and initializes test database
+        super().setUp()
+        self.username = "testuser"
+        self.password = "FatChance!"
+        self.user1 = User.objects.create_user(
+            username=self.username,
+            password=self.password,
+            email="testuser@nowhere.com"
+        )
+        self.user1.first_name = "Tester"
+        self.user1.save()
+        # we need a poll question to test voting
+        q = Question.objects.create(question_text="First Poll Question")
+        q.save()
+        # a few choices
+        for n in range(1, 4):
+            choice = Choice(choice_text=f"Choice {n}", question=q)
+            choice.save()
+        self.question = q
+
+    def test_logout(self):
+        """A user can logout using the logout URL.
+
+        As an authenticated user,
+        when I visit /accounts/logout/
+        then I am logged out
+        and then redirected to the login page.
+        """
+        logout_url = reverse("logout")
+        self.assertTrue(self.client.login(username=self.username, password=self.password))
+
+        # Use POST to logout (as Django requires)
+        response = self.client.post(logout_url)
+        self.assertEqual(302, response.status_code)
+
+        # Should redirect us to the LOGOUT_REDIRECT_URL
+        self.assertRedirects(response, reverse(settings.LOGOUT_REDIRECT_URL))
+
+    def test_login_view(self):
+        """A user can login using the login view."""
+        login_url = reverse("login")
+        # Can get the login page
+        response = self.client.get(login_url)
+        self.assertEqual(200, response.status_code)
+        # Can login using a POST request
+        # usage: client.post(url, {'key1":"value", "key2":"value"})
+        form_data = {"username": "testuser",
+                     "password": "FatChance!"
+                     }
+        response = self.client.post(login_url, form_data)
+        # after successful login, should redirect browser somewhere
+        self.assertEqual(302, response.status_code)
+        # should redirect us to the polls index page ("polls:index")
+        self.assertRedirects(response, reverse(settings.LOGIN_REDIRECT_URL))
+
+    def test_auth_required_to_vote(self):
+        """Authentication is required to submit a vote.
+
+        As an unauthenticated user,
+        when I submit a vote for a question,
+        then I am redirected to the login page with a `next` parameter.
+        """
+        vote_url = reverse('polls:vote', args=[self.question.id])
+
+        # Get the first choice for voting
+        choice = self.question.choice_set.first()
+        form_data = {"choice": f"{choice.id}"}
+
+        # Try to submit the vote without being authenticated
+        response = self.client.post(vote_url, form_data)
+
+        # Expect to be redirected to the login page with the `next` parameter
+        self.assertEqual(response.status_code, 302)  # Could also be 303 for a POST-redirect
+
+        # Ensure the redirect includes the `?next=` query parameter pointing to the vote URL
+        login_with_next = f"{reverse('login')}?next={vote_url}"
+        self.assertRedirects(response, login_with_next)
+
+
+class VoteTestCase(TestCase):
+    def setUp(self):
+        user = User.objects.create(username='testuser')
+        question = Question.objects.create(question_text='Test question')
+        choice = Choice.objects.create(question=question, choice_text='Test choice')
+
+    def test_user_can_vote(self):
+        user = User.objects.get(username='testuser')
+        choice = Choice.objects.get(choice_text='Test choice')
+        Vote.objects.create(user=user, choice=choice)
+
+        self.assertEqual(choice.votes, 1)
