@@ -4,7 +4,8 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from django.contrib import messages
-from .models import Choice, Question
+from .models import Choice, Question, Vote
+from django.contrib.auth.decorators import login_required
 
 
 class IndexView(generic.ListView):
@@ -40,22 +41,22 @@ class ResultsView(generic.DetailView):
     template_name = 'polls/results.html'
 
 
+@login_required
 def vote(request, question_id):
     """
     Handle voting for a specific question. Increments the vote count for the
     selected choice and redirects to the results page.
-
     If voting is not allowed or if no choice is selected, redisplay the question
     detail page with an error message.
     """
     question = get_object_or_404(Question, pk=question_id)
+    user = request.user
 
     if not question.can_vote():
         return render(request, 'polls/detail.html', {
             'question': question,
             'error_message': "Voting is not allowed for this question.",
         })
-
     try:
         selected_choice = question.choice_set.get(pk=request.POST['choice'])
     except (KeyError, Choice.DoesNotExist):
@@ -64,9 +65,15 @@ def vote(request, question_id):
             'error_message': "You didn't select a choice.",
         })
     else:
-        selected_choice.votes += 1
-        selected_choice.save()
-        return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+        existing_vote = Vote.objects.filter(user=user, choice__question=question).first()
+
+    if existing_vote:
+        existing_vote.choice = selected_choice
+        existing_vote.save()
+    else:
+        Vote.objects.create(user=user, choice=selected_choice)
+
+    return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
 
 
 def index(request):
