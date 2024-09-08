@@ -10,38 +10,50 @@
 </head>
 <body>
     <div class="container">
-    <h1>KU Polls</h1>
-    {% if user.is_authenticated %}
-        Welcome back, {{ user.username }} 
-    {% else %}
-        Please <a href="{% url 'login' %}?next={{request.path}}">Login</a>
-    {% endif %}
-    
-        {% if user.is_authenticated %}
-    <form action="{% url 'logout' %}" method="post">
-      {% csrf_token %}
-      <button type="submit">Log Out</button>
-    </form>
-    {% else %}
-            
-    <p>You are not logged in</p>
+        <h1>KU Polls</h1>
 
-    {% endif %}
+        <!-- Authentication status -->
+        {% if user.is_authenticated %}
+            <p>Welcome back, {{ user.username }}!</p>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit">Log Out</button>
+            </form>
+        {% else %}
+            <p>Please <a href="{% url 'login' %}?next={{ request.path }}">Login</a></p>
+        {% endif %}
         
-    {% if latest_question_list %}
-        <ul>
-            {% for question in latest_question_list %}
-                <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+        <!-- Poll list -->
+        {% if latest_question_list %}
+            <div class="polls-container">
+                {% for question in latest_question_list %}
+                    <div class="poll-box">
+                        <!-- Question text -->
+                        <h3>{{ question.question_text }}</h3>
+
+                        <!-- Poll status: Open or Closed -->
+                        {% if question.voting_allowed %}
+                            <p>Status: Open 🟢</p>
+                            <a href="{% url 'polls:detail' question.id %}" class="btn btn-primary">Vote</a>
+                        {% else %}
+                            <p>Status: Closed 🔴</p>
+                        {% endif %}
+
+                        <!-- 'See Results' button -->
+                        <a href="{% url 'polls:results' question.id %}" class="btn btn-secondary">See Results</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>No polls are available.</p>
+        {% endif %}
+
+        <!-- Display messages -->
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">{{ message }}</div>
             {% endfor %}
-        </ul>
-    {% else %}
-        <p>No polls are available.</p>
-    {% endif %}
+        {% endif %}
     </div>
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
 </body>
 </html>
