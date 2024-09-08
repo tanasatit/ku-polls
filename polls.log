@@ -1,0 +1,73 @@
+INFO 2024-09-08 21:09:12,392 views admin logged in from 127.0.0.1
+INFO 2024-09-08 21:09:12,405 views Vote submitted for poll #4
+ERROR 2024-09-08 21:09:12,405 views Choice does not exist for question 4
+Traceback (most recent call last):
+  File "/Users/tanasatit/ske year2-1/ku-polls/.venv/lib/python3.12/site-packages/django/utils/datastructures.py", line 84, in __getitem__
+    list_ = super().__getitem__(key)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+KeyError: 'choice'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/tanasatit/ske year2-1/ku-polls/polls/views.py", line 60, in vote
+    selected_choice = question.choice_set.get(pk=request.POST['choice'])
+                                                 ~~~~~~~~~~~~^^^^^^^^^^
+  File "/Users/tanasatit/ske year2-1/ku-polls/.venv/lib/python3.12/site-packages/django/utils/datastructures.py", line 86, in __getitem__
+    raise MultiValueDictKeyError(key)
+django.utils.datastructures.MultiValueDictKeyError: 'choice'
+INFO 2024-09-08 21:09:22,053 views Vote submitted for poll #4
+INFO 2024-09-08 21:13:46,824 views Vote submitted for poll #4
+INFO 2024-09-08 21:13:46,830 views User admin voted for Walking in question 4
+INFO 2024-09-08 21:14:27,560 views Vote submitted for poll #3
+INFO 2024-09-08 21:39:45,570 views admin logged out from 127.0.0.1
+INFO 2024-09-08 21:39:52,436 views harry logged in from 127.0.0.1
+INFO 2024-09-08 21:40:03,236 views Vote submitted for poll #4
+INFO 2024-09-08 21:40:03,242 views User harry voted for Bus in question 4
+INFO 2024-09-08 22:16:02,667 views Vote submitted for poll #4
+ERROR 2024-09-08 22:16:02,669 views No choice selected for question 4 by user harry
+INFO 2024-09-08 22:16:13,680 views Vote submitted for poll #4
+ERROR 2024-09-08 22:16:13,680 views No choice selected for question 4 by user harry
+INFO 2024-09-08 22:17:06,611 views Vote submitted for poll #4
+ERROR 2024-09-08 22:17:06,612 views No choice selected for question 4 by user harry
+INFO 2024-09-08 22:21:15,848 views Vote submitted for poll #4
+ERROR 2024-09-08 22:21:15,848 views No choice selected for question 4 by user harry
+INFO 2024-09-08 22:27:47,339 views admin logged in from 127.0.0.1
+INFO 2024-09-08 22:28:03,571 views Vote submitted for poll #4
+INFO 2024-09-08 22:28:03,575 views User admin voted for Motorcycle in question 4
+INFO 2024-09-08 22:28:12,466 views Vote submitted for poll #4
+ERROR 2024-09-08 22:28:12,467 views No choice selected for question 4 by user admin
+INFO 2024-09-08 22:29:56,102 views Vote submitted for poll #4
+ERROR 2024-09-08 22:29:56,103 views No choice selected for question 4 by user admin
+INFO 2024-09-08 22:31:01,865 views Vote submitted for poll #4
+ERROR 2024-09-08 22:31:01,866 views No choice selected for question 4 by user admin
+INFO 2024-09-08 22:31:03,747 views Vote submitted for poll #4
+ERROR 2024-09-08 22:31:03,747 views No choice selected for question 4 by user admin
+INFO 2024-09-08 22:46:26,030 views Vote submitted for poll #3
+INFO 2024-09-08 22:48:10,793 views harry logged in from 127.0.0.1
+INFO 2024-09-08 22:49:42,898 views harry logged out from 127.0.0.1
+INFO 2024-09-08 22:50:02,941 views harry logged in from 127.0.0.1
+INFO 2024-09-08 22:50:13,083 views Vote submitted for poll #4
+INFO 2024-09-08 22:50:13,089 views User harry voted for Motorcycle in question 4
+INFO 2024-09-08 22:50:16,795 views Vote submitted for poll #4
+ERROR 2024-09-08 22:50:16,795 views No choice selected for question 4 by user harry
+INFO 2024-09-08 22:54:33,498 views Vote submitted for poll #4
+ERROR 2024-09-08 22:54:33,498 views No choice selected for question 4 by user harry
+INFO 2024-09-08 22:54:36,758 views Vote submitted for poll #4
+ERROR 2024-09-08 22:54:36,758 views No choice selected for question 4 by user harry
+INFO 2024-09-08 22:55:00,063 views harry logged out from 127.0.0.1
+WARNING 2024-09-08 22:55:13,243 views Failed login for harrry from 127.0.0.1
+WARNING 2024-09-08 22:55:19,061 views Failed login for harrry from 127.0.0.1
+INFO 2024-09-08 22:55:26,194 views harry logged in from 127.0.0.1
+INFO 2024-09-08 22:55:26,206 views Vote submitted for poll #4
+ERROR 2024-09-08 22:55:26,206 views No choice selected for question 4 by user harry
+INFO 2024-09-08 22:55:28,438 views Vote submitted for poll #4
+ERROR 2024-09-08 22:55:28,438 views No choice selected for question 4 by user harry
+INFO 2024-09-08 23:01:19,639 views Vote submitted for poll #4
+ERROR 2024-09-08 23:01:19,640 views No choice selected for question 4 by user harry
+INFO 2024-09-08 23:01:38,872 views Vote submitted for poll #4
+INFO 2024-09-08 23:01:38,876 views User harry voted for Motorcycle in question 4
+INFO 2024-09-08 23:01:46,077 views Vote submitted for poll #4
+INFO 2024-09-08 23:01:46,081 views User harry voted for Walking in question 4
+INFO 2024-09-08 23:01:50,364 views harry logged out from 127.0.0.1
+INFO 2024-09-08 23:03:25,631 views harry logged in from 127.0.0.1

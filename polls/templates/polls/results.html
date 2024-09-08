@@ -1,13 +1,8 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Poll Results</title>
-    <link rel="stylesheet" href="{% static 'polls/style.css' %}">
-</head>
-<body>
+{% extends 'polls/base.html' %}
+
+{% block title %}Polls Index{% endblock %}
+
+{% block content %}
     <h1>{{ question.question_text }}</h1>
     <table class="results-table">
         <thead>
@@ -25,8 +20,11 @@
             {% endfor %}
         </tbody>
     </table>
-
-    <a href="{% url 'polls:detail' question.id %}" class="button">Vote again?</a>
+    
+    {% if question.can_vote %}
+        <a href="{% url 'polls:detail' question.id %}" class="button">Vote Again</a>
+    {% endif %}
     <a href="{% url 'polls:index' %}" class="button">Back to List of Polls</a>
-</body>
-</html>
+    
+{% endblock %}
+

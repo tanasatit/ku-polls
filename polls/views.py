@@ -57,38 +57,35 @@ class ResultsView(generic.DetailView):
 
 @login_required(login_url='login')
 def vote(request, question_id):
-    """
-    Handle voting on a poll. Ensure the user is logged in and the vote is valid.
-    """
     question = get_object_or_404(Question, pk=question_id)
-    logger.info("Vote submitted for poll #{0}".format(question_id))
 
-    # Check if voting is allowed
     if not question.can_vote():
-        messages.error(request, "Voting is not allowed for this poll.")
         return redirect('polls:index')
 
-    # Use `get` to avoid KeyError if 'choice' is not in POST data
+    # Get the selected choice
     choice_id = request.POST.get('choice')
     if not choice_id:
-        logger.error(f"No choice selected for question {question_id} by user {request.user.username}")
-        messages.error(request, "No choice was selected.")
-        return redirect('polls:detail', question_id=question.id)
+        # Pass an error message as context
+        return render(request, 'polls/detail.html', {
+            'question': question,
+            'error_message': "You didn't select a choice.",
+        })
 
     try:
         selected_choice = question.choice_set.get(pk=choice_id)
     except Choice.DoesNotExist:
-        logger.error(f"Choice does not exist for question {question_id}")
-        messages.error(request, "The selected choice does not exist.")
-        return redirect('polls:index')
-    else:
-        vote, created = Vote.objects.update_or_create(
-            user=request.user, choice__question=question,
-            defaults={'choice': selected_choice}
-        )
+        return render(request, 'polls/detail.html', {
+            'question': question,
+            'error_message': "Invalid choice selected.",
+        })
 
-        logger.info(f"User {request.user.username} voted for {selected_choice.choice_text} in question {question_id}")
-        return redirect('polls:results', question.id)
+    Vote.objects.update_or_create(
+        user=request.user,
+        choice__question=question,
+        defaults={'choice': selected_choice}
+    )
+
+    return redirect('polls:results', pk=question.id)
 
 
 def index(request):
