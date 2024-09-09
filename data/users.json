@@ -1,0 +1,92 @@
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$jm1VmsLI4KJ7CgmccDpXeE$lOuqEGivTcQjIemqOphAeQshed9c7cR9au/XCtBBalg=",
+    "last_login": "2024-09-09T03:26:40.691Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "tanasatit.n@ku.th",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-09-09T03:26:05.799Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$ZInm6PNk8ljtE86HTOAxvh$7jWKCpg6t6E1SPuIBJyg3UP5QUBmksypeBHRryteFAI=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "harry",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-09T03:32:38.115Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$1yMnmrSjjrWI039TE97dA4$lNy1k4Ie96G16gX4ZwSzhUyT5K5ppnElqcRcbCvaNYE=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "demo1",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-09T03:33:10.655Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$vfTCeCeFrlbQAxRAwRfuXe$qmgmzD8/hFyKi637tdNK0G0SYXVOPzFhMDW42k7aXpM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "demo2",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-09T03:33:37.585Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$870000$BwYXQ2VnLd2zWFvQVOGwZj$1qFt904trp6jU7TqyUGEkj85aDNUeA2YjZXfcrgMz9E=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "demo3",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-09-09T03:33:56.243Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
