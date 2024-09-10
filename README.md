@@ -1,4 +1,4 @@
-[![Django CI](https://github.com/tanasatit/ku-polls/actions/workflows/django.yml/badge.svg)](https://github.com/tanasatit/ku-polls/actions/workflows/django.yml)
+[![Django CI](https://github.com/tanasatit/ku-polls/actions/workflows/django.yml/badge.svg?branch=main)](https://github.com/tanasatit/ku-polls/actions/workflows/django.yml)
 
 # KU Polls: Online Survey Questions 
 
