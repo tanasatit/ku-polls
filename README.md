@@ -2,8 +2,6 @@
 [![Django CI](https://github.com/tanasatit/ku-polls/actions/workflows/django.yml/badge.svg)](https://github.com/tanasatit/ku-polls/actions/workflows/django.yml)
 [![Flake8](https://github.com/tanasatit/ku-polls/actions/workflows/flake8.yml/badge.svg)](https://github.com/tanasatit/ku-polls/actions/workflows/flake8.yml)
 
-[![Django CI](https://github.com/tanasatit/ku-polls/actions/workflows/django.yml/badge.svg?branch=main)](https://github.com/tanasatit/ku-polls/actions/workflows/django.yml)
-
 An application to conduct online polls and surveys based
 on the [Django Tutorial project](https://docs.djangoproject.com/en/4.1/intro/tutorial01/), with
 additional features.
