@@ -24,6 +24,7 @@ class IndexView(generic.ListView):
     Display a list of all published polls,
     sorted by date, from newest to oldest.
     """
+
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
@@ -50,9 +51,7 @@ class IndexView(generic.ListView):
 
 
 class DetailView(generic.DetailView):
-    """
-    Display details of a specific question, excluding unpublished questions.
-    """
+    """Display details of a specific question, excluding unpublished questions."""
     model = Question
     template_name = 'polls/detail.html'
 
@@ -64,9 +63,8 @@ class DetailView(generic.DetailView):
 
 
 class ResultsView(generic.DetailView):
-    """
-    Display the results for a specific question.
-    """
+    """Display the results for a specific question."""
+
     model = Question
     template_name = 'polls/results.html'
 
@@ -111,9 +109,7 @@ def vote(request, question_id):
 
 
 def index(request):
-    """
-    Display a list of the latest five published questions.
-    """
+    """Display a list of the latest five published questions."""
     latest_question_list = Question.objects.filter(
         pub_date__lte=timezone.localtime()
     ).order_by('-pub_date')[:5]
@@ -148,9 +144,7 @@ def detail(request, question_id):
 
 
 def results(request, question_id):
-    """
-    Display the results of a specific question.
-    """
+    """Display the results of a specific question."""
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/results.html', {'question': question})
 
