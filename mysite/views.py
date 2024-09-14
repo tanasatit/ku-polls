@@ -1,3 +1,8 @@
+"""
+This module contains views for user
+authentication, including registration and login.
+"""
+
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
@@ -15,10 +20,10 @@ def signup(request):
             raw_passwd = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_passwd)
             login(request, user)
-        return redirect('polls:index')
-        # what if form is not valid?
-        # we should display a message in signup.html
+            return redirect('polls:index')
+        # if the form is not valid, we should display a message in signup.html
     else:
-        # create a user form and display it the signup page
+        # create a user form and display it on the signup page
         form = UserCreationForm()
+
     return render(request, 'registration/signup.html', {'form': form})
