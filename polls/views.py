@@ -1,15 +1,12 @@
-from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
-from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
-from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from django.contrib import messages
 from .models import Choice, Question, Vote
 from django.contrib.auth.decorators import login_required
 import logging
-from django.contrib.auth.signals import user_logged_in, user_logged_out, user_login_failed
+from django.contrib.auth.signals import (
+    user_logged_in, user_logged_out, user_login_failed)
 from django.dispatch import receiver
 
 
@@ -40,7 +37,10 @@ class IndexView(generic.ListView):
 
 
 class DetailView(generic.DetailView):
-    """Display details of a specific question, excluding unpublished questions."""
+    """
+    Display details of a specific question,
+    excluding unpublished questions.
+    """
     model = Question
     template_name = 'polls/detail.html'
 
@@ -101,9 +101,9 @@ def index(request):
 
 def detail(request, question_id):
     """
-    Display details of a specific question. Redirect to the index page with an
-    error message if voting is not allowed. Also, if the user has previously voted,
-    pass the selected choice to the template.
+    Display details of a specific question. Redirect to the index page
+    with an error message if voting is not allowed. Also, if the user
+    has previously voted,pass the selected choice to the template.
     """
     question = get_object_or_404(Question, pk=question_id)
 
@@ -115,7 +115,8 @@ def detail(request, question_id):
     # Check if the user has already voted on this question
     previous_vote = None
     if request.user.is_authenticated:
-        previous_vote = Vote.objects.filter(user=request.user, choice__question=question).first()
+        previous_vote = Vote.objects.filter(
+            user=request.user, choice__question=question).first()
 
     return render(request, 'polls/detail.html', {
         'question': question,
@@ -147,7 +148,8 @@ def log_user_logout(sender, request, user, **kwargs):
 @receiver(user_login_failed)
 def log_user_login_failed(sender, credentials, request, **kwargs):
     ip_addr = get_client_ip(request)
-    logger.warning(f"Failed login for {credentials.get('username')} from {ip_addr}")
+    (logger.warning
+     (f"Failed login for {credentials.get('username')} from {ip_addr}"))
 
 
 def get_client_ip(request):

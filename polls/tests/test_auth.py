@@ -12,12 +12,15 @@ class UserAuthTest(TestCase):
 
     def setUp(self):
         """
-        Create a test user and a poll question with choices for authentication and voting tests.
+        Create a test user and a poll question with choices
+        for authentication and voting tests.
         """
         super().setUp()
         self.username = "testuser"
         self.password = "FatChance!"
-        self.user1 = User.objects.create_user(username=self.username, password=self.password, email="testuser@nowhere.com")
+        self.user1 = User.objects.create_user(username=self.username,
+                                              password=self.password,
+                                              email="testuser@nowhere.com")
         self.user1.first_name = "Tester"
         self.user1.save()
 
@@ -28,11 +31,10 @@ class UserAuthTest(TestCase):
         self.question = q
 
     def test_logout(self):
-        """
-        Test if a user can log out successfully using the logout URL.
-        """
+        """Test if a user can log out successfully using the logout URL."""
         logout_url = reverse("logout")
-        self.assertTrue(self.client.login(username=self.username, password=self.password))
+        self.assertTrue(self.client.login(username=self.username,
+                                          password=self.password))
         response = self.client.post(logout_url)
         self.assertEqual(302, response.status_code)
         self.assertRedirects(response, reverse(settings.LOGOUT_REDIRECT_URL))

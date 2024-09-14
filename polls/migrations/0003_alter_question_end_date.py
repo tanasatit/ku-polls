@@ -13,6 +13,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='question',
             name='end_date',
-            field=models.DateTimeField(blank=True, null=True, verbose_name='date end'),
+            field=models.DateTimeField
+            (blank=True, null=True, verbose_name='date end'),
         ),
     ]

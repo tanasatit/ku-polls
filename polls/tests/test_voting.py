@@ -10,11 +10,15 @@ class VoteTestCase(TestCase):
 
     def setUp(self):
         """
-        Create a test user, a question, and a choice for testing voting functionality.
+        Create a test user, a question,
+        and a choice for testing voting functionality.
         """
         self.user = User.objects.create(username='testuser')
-        self.question = Question.objects.create(question_text='Test question')
-        self.choice = Choice.objects.create(question=self.question, choice_text='Test choice')
+        self.question = (Question.objects.
+                         create(question_text='Test question'))
+        self.choice = (Choice.objects.
+                       create(question=self.question,
+                              choice_text='Test choice'))
 
     def test_user_can_vote(self):
         """
