@@ -20,10 +20,7 @@ from django.dispatch import receiver
 
 
 class IndexView(generic.ListView):
-    """
-    Display a list of all published polls,
-    sorted by date, from newest to oldest.
-    """
+    """Display a list of all published polls,sorted by date, from newest to oldest."""
 
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
@@ -52,6 +49,7 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
     """Display details of a specific question, excluding unpublished questions."""
+
     model = Question
     template_name = 'polls/detail.html'
 
