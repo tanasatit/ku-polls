@@ -1,3 +1,10 @@
+"""
+URL configuration for the Polls app.
+
+This module defines URL patterns for the Polls app, including paths for
+index, detail, results, voting, and logout views.
+"""
+
 from django.urls import path
 from django.contrib.auth.views import LogoutView
 from . import views

@@ -1,32 +1,42 @@
-from django.http import HttpResponseRedirect
+"""
+Views for the Polls app.
+
+This module contains views for listing polls,
+displaying details and results,
+handling votes, and logging user actions.
+"""
+
 from django.shortcuts import get_object_or_404, render, redirect
-from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from django.contrib import messages
 from .models import Choice, Question, Vote
 from django.contrib.auth.decorators import login_required
 import logging
-from django.contrib.auth.signals import user_logged_in, user_logged_out, user_login_failed
+from django.contrib.auth.signals import (
+    user_logged_in, user_logged_out, user_login_failed
+)
 from django.dispatch import receiver
 
 
 class IndexView(generic.ListView):
-    """
-    Display a list of the last five published questions, excluding those
-    scheduled to be published in the future.
-    """
+    """Display a list of all published polls,sorted by date, from newest to oldest."""
+
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        """Return the last five published questions."""
+        """Return all published questions, ordered by date from newest to oldest."""
         return Question.objects.filter(
             pub_date__lte=timezone.localtime()
-        ).order_by('-pub_date')[:5]
+        ).order_by('-pub_date')
 
     def get_context_data(self, **kwargs):
-        """Add extra context to check if voting is allowed."""
+        """
+        Add extra context to check if voting is allowed.
+
+        This method adds a 'voting_allowed' status to each question in the context.
+        """
         context = super().get_context_data(**kwargs)
         latest_questions = context['latest_question_list']
 
@@ -39,6 +49,7 @@ class IndexView(generic.ListView):
 
 class DetailView(generic.DetailView):
     """Display details of a specific question, excluding unpublished questions."""
+
     model = Question
     template_name = 'polls/detail.html'
 
@@ -51,12 +62,19 @@ class DetailView(generic.DetailView):
 
 class ResultsView(generic.DetailView):
     """Display the results for a specific question."""
+
     model = Question
     template_name = 'polls/results.html'
 
 
 @login_required(login_url='login')
 def vote(request, question_id):
+    """
+    Handle the voting for a specific question.
+
+    If voting is allowed, update or create a Vote record. Redirect to the results page.
+    If no choice is selected or the choice is invalid, display an error message.
+    """
     question = get_object_or_404(Question, pk=question_id)
 
     if not question.can_vote():
@@ -99,9 +117,10 @@ def index(request):
 
 def detail(request, question_id):
     """
-    Display details of a specific question. Redirect to the index page with an
-    error message if voting is not allowed. Also, if the user has previously voted,
-    pass the selected choice to the template.
+    Display details of a specific question.
+
+    Redirect to the index page with an error message if voting is not allowed.
+    If the user has previously voted, pass the selected choice to the template.
     """
     question = get_object_or_404(Question, pk=question_id)
 
@@ -113,7 +132,9 @@ def detail(request, question_id):
     # Check if the user has already voted on this question
     previous_vote = None
     if request.user.is_authenticated:
-        previous_vote = Vote.objects.filter(user=request.user, choice__question=question).first()
+        previous_vote = Vote.objects.filter(
+            user=request.user, choice__question=question
+        ).first()
 
     return render(request, 'polls/detail.html', {
         'question': question,
@@ -132,24 +153,43 @@ logger = logging.getLogger("polls")
 
 @receiver(user_logged_in)
 def log_user_login(sender, request, user, **kwargs):
+    """
+    Log user login events.
+
+    Record the login event with the user's username and IP address.
+    """
     ip_addr = get_client_ip(request)
     logger.info(f"{user.username} logged in from {ip_addr}")
 
 
 @receiver(user_logged_out)
 def log_user_logout(sender, request, user, **kwargs):
+    """
+    Log user logout events.
+
+    Record the logout event with the user's username and IP address.
+    """
     ip_addr = get_client_ip(request)
     logger.info(f"{user.username} logged out from {ip_addr}")
 
 
 @receiver(user_login_failed)
 def log_user_login_failed(sender, credentials, request, **kwargs):
+    """
+    Log failed login attempts.
+
+    Record failed login attempts with the username and IP address.
+    """
     ip_addr = get_client_ip(request)
     logger.warning(f"Failed login for {credentials.get('username')} from {ip_addr}")
 
 
 def get_client_ip(request):
-    """Get the visitor’s IP address using request headers."""
+    """
+    Get the visitor’s IP address using request headers.
+
+    Returns the IP address from the HTTP_X_FORWARDED_FOR header or REMOTE_ADDR.
+    """
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
         ip = x_forwarded_for.split(',')[0]

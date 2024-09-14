@@ -23,14 +23,17 @@ class QuestionModelTests(TestCase):
         """
         A question with a pub_date in the future should not be published.
         """
-        future_question = create_question(question_text='Future Question', days=5)
+        future_question = create_question(question_text='Future Question',
+                                          days=5)
         self.assertFalse(future_question.is_published())
 
     def test_default_pub_date(self):
         """
-        A question with a pub_date equal to the current date should be published.
+        A question with a pub_date equal to
+        the current date should be published.
         """
-        current_question = create_question(question_text='Current Question', days=0)
+        current_question = create_question(question_text='Current Question',
+                                           days=0)
         self.assertTrue(current_question.is_published())
 
     def test_past_pub_date(self):
@@ -48,25 +51,32 @@ class QuestionVoteTests(TestCase):
 
     def test_can_vote_when_within_period(self):
         """
-        Voting should be allowed if the question's end_date is in the future.
+        Voting should be allowed if
+        the question's end_date is in the future.
         """
-        question = create_question(question_text='Vote Allowed Question', days=0)
+        question = create_question(question_text='Vote Allowed Question',
+                                   days=0)
         question.end_date = timezone.now() + datetime.timedelta(days=1)
         question.save()
         self.assertTrue(question.can_vote())
 
     def test_cannot_vote_after_end_date(self):
         """
-        Voting should not be allowed if the question's end_date is in the past.
+        Voting should not be allowed if
+        the question's end_date is in the past.
         """
-        question = create_question(question_text='Vote Not Allowed Question', days=-5)
+        question = create_question(question_text='Vote Not Allowed Question',
+                                   days=-5)
         question.end_date = timezone.now() - datetime.timedelta(days=1)
         question.save()
         self.assertFalse(question.can_vote())
 
     def test_cannot_vote_before_pub_date(self):
         """
-        Voting should not be allowed if the question's pub_date is in the future.
+        Voting should not be allowed if
+        the question's pub_date is in the future.
         """
-        question = create_question(question_text='Vote Not Allowed Yet Question', days=5)
+        question = create_question(
+            question_text='Vote Not Allowed Yet Question',
+            days=5)
         self.assertFalse(question.can_vote())

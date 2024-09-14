@@ -1,8 +1,9 @@
 {% extends 'polls/base.html' %}
+   {% load static %}
 
-{% block title %}Polls Index{% endblock %}
+   {% block title %}Polls Index{% endblock %}
 
-{% block content %}
+   {% block content %}
     {% if latest_question_list %}
         <div class="polls-container">
             {% for question in latest_question_list %}
@@ -11,12 +12,16 @@
 
                     {% if question.voting_allowed %}
                         <p>Status: Open 🟢</p>
-                        <a href="{% url 'polls:detail' question.id %}" class="button">Vote</a>
                     {% else %}
                         <p>Status: Closed 🔴</p>
                     {% endif %}
 
-                    <a href="{% url 'polls:results' question.id %}" class="button">See Results</a>
+                    <div class="button-container">
+                        {% if question.voting_allowed %}
+                            <a href="{% url 'polls:detail' question.id %}" class="button">Vote</a>
+                        {% endif %}
+                        <a href="{% url 'polls:results' question.id %}" class="button">See Results</a>
+                    </div>
                 </div>
             {% endfor %}
         </div>

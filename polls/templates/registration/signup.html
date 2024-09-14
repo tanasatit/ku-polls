@@ -1,12 +1,23 @@
-<h2>Register</h2>
-<form method="POST">
-    {% csrf_token %}
-    <table style="padding: 2ex;">
-    {{ form.as_table }}     {# this line shows the sign-up form #}
-    <tr>
-    <td colspan="2">
-    <button type="submit">Register</button>
-    </td>
-    </tr>
-    </table>
-</form>
+{% extends 'polls/base.html' %}
+{% load static %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="poll-box">
+    <h2>Register</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <table class="form-table">
+            {{ form.as_table }}
+            <tr>
+                <td colspan="2">
+                    <div class="button-container">
+                        <button type="submit" class="button">Register</button>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+{% endblock %}

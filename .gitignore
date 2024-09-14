@@ -1,4 +1,11 @@
+# SQLite database file
 db.sqlite3
+
+# macOS system files
 .DS_Store
+
+# Python virtual environment
 .venv
+
+# Environment variables file
 .env

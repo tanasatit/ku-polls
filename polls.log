@@ -71,3 +71,16 @@ INFO 2024-09-08 23:01:46,077 views Vote submitted for poll #4
 INFO 2024-09-08 23:01:46,081 views User harry voted for Walking in question 4
 INFO 2024-09-08 23:01:50,364 views harry logged out from 127.0.0.1
 INFO 2024-09-08 23:03:25,631 views harry logged in from 127.0.0.1
+INFO 2024-09-14 16:45:51,560 views admin logged in from 127.0.0.1
+INFO 2024-09-14 16:46:43,949 views admin logged out from 127.0.0.1
+WARNING 2024-09-14 17:12:28,366 views Failed login for myuser from 127.0.0.1
+WARNING 2024-09-14 17:12:36,968 views Failed login for myuser from 127.0.0.1
+WARNING 2024-09-14 17:14:22,076 views Failed login for harry from 127.0.0.1
+INFO 2024-09-14 17:14:27,257 views harry logged in from 127.0.0.1
+INFO 2024-09-14 17:14:30,768 views harry logged out from 127.0.0.1
+WARNING 2024-09-14 17:21:17,840 views Failed login for tai from 127.0.0.1
+INFO 2024-09-14 17:40:49,712 views harry logged in from 127.0.0.1
+INFO 2024-09-14 17:41:15,362 views harry logged out from 127.0.0.1
+INFO 2024-09-14 17:50:56,024 views friend logged in from 127.0.0.1
+INFO 2024-09-14 17:51:07,629 views friend logged out from 127.0.0.1
+INFO 2024-09-14 18:18:43,106 views admin logged in from 127.0.0.1
