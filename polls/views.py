@@ -118,9 +118,9 @@ def index(request):
 def detail(request, question_id):
     """
     Display details of a specific question.
-    Redirect to the index page with an error message
-    if voting is not allowed. If the user has
-    previously voted, pass the selected choice to the template.
+
+    Redirect to the index page with an error message if voting is not allowed.
+    If the user has previously voted, pass the selected choice to the template.
     """
     question = get_object_or_404(Question, pk=question_id)
 
