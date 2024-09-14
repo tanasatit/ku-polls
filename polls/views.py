@@ -1,7 +1,8 @@
 """
 Views for the Polls app.
 
-This module contains views for listing polls, displaying details and results,
+This module contains views for listing polls,
+displaying details and results,
 handling votes, and logging user actions.
 """
 
@@ -20,7 +21,8 @@ from django.dispatch import receiver
 
 class IndexView(generic.ListView):
     """
-    Display a list of all published polls, sorted by date, from newest to oldest.
+    Display a list of all published polls,
+    sorted by date, from newest to oldest.
     """
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
@@ -62,9 +64,7 @@ class DetailView(generic.DetailView):
 
 
 class ResultsView(generic.DetailView):
-    """
-    Display the results for a specific question.
-    """
+    """Display the results for a specific question."""
     model = Question
     template_name = 'polls/results.html'
 
@@ -109,9 +109,7 @@ def vote(request, question_id):
 
 
 def index(request):
-    """
-    Display a list of the latest five published questions.
-    """
+    """Display a list of the latest five published questions."""
     latest_question_list = Question.objects.filter(
         pub_date__lte=timezone.localtime()
     ).order_by('-pub_date')[:5]
@@ -146,9 +144,7 @@ def detail(request, question_id):
 
 
 def results(request, question_id):
-    """
-    Display the results of a specific question.
-    """
+    """Display the results of a specific question."""
     question = get_object_or_404(Question, pk=question_id)
     return render(request, 'polls/results.html', {'question': question})
 
@@ -160,6 +156,7 @@ logger = logging.getLogger("polls")
 def log_user_login(sender, request, user, **kwargs):
     """
     Log user login events.
+
     Record the login event with the user's username and IP address.
     """
     ip_addr = get_client_ip(request)
@@ -170,6 +167,7 @@ def log_user_login(sender, request, user, **kwargs):
 def log_user_logout(sender, request, user, **kwargs):
     """
     Log user logout events.
+
     Record the logout event with the user's username and IP address.
     """
     ip_addr = get_client_ip(request)
@@ -180,6 +178,7 @@ def log_user_logout(sender, request, user, **kwargs):
 def log_user_login_failed(sender, credentials, request, **kwargs):
     """
     Log failed login attempts.
+
     Record failed login attempts with the username and IP address.
     """
     ip_addr = get_client_ip(request)
@@ -189,6 +188,7 @@ def log_user_login_failed(sender, credentials, request, **kwargs):
 def get_client_ip(request):
     """
     Get the visitor’s IP address using request headers.
+
     Returns the IP address from the HTTP_X_FORWARDED_FOR header or REMOTE_ADDR.
     """
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
