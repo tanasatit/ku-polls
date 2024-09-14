@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = config('SECRET_KEY', default='your-default-secret-key')
 DEBUG = config('DEBUG', cast=bool, default=False)
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost').split(',')
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '[::1]', 'testserver']
 TIME_ZONE = config('TIME_ZONE', default='UTC')
 
 # Application definition

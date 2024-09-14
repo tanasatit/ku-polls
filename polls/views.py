@@ -1,3 +1,5 @@
+from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render, redirect
 from django.urls import reverse

@@ -1,16 +1,20 @@
-<html>
-<body>
-<h2>Login</h2>
-<form method="post">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <p>
-  <button type="submit">Login</button>
-  </p>
-  <input type="hidden" name="next" value="{{next}}"/>
- </form>
+{% extends 'polls/base.html' %}
+{% load static %}
 
- <p>Don't have an account? <a href="{% url 'signup' %}">Sign up here</a></p>
-</body>
-</html>
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="poll-box">
+    <h2>Login</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <div class="button-container">
+            <button type="submit" class="button">Login</button>
+        </div>
+        <input type="hidden" name="next" value="{{next}}"/>
+    </form>
+    <p>Don't have an account? <a href="{% url 'signup' %}" class="link">Sign up here</a></p>
+</div>
+{% endblock %}
 
