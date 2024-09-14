@@ -12,17 +12,16 @@ from django.dispatch import receiver
 
 class IndexView(generic.ListView):
     """
-    Display a list of the last five published questions, excluding those
-    scheduled to be published in the future.
+    Display a list of all published polls, sorted by date, from newest to oldest.
     """
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
 
     def get_queryset(self):
-        """Return the last five published questions."""
+        """Return all published questions, ordered by date from newest to oldest."""
         return Question.objects.filter(
             pub_date__lte=timezone.localtime()
-        ).order_by('-pub_date')[:5]
+        ).order_by('-pub_date')
 
     def get_context_data(self, **kwargs):
         """Add extra context to check if voting is allowed."""
