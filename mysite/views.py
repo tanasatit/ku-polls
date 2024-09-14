@@ -1,6 +1,7 @@
 """
-This module contains views for user
-authentication, including registration and login.
+Views for user authentication.
+
+This module contains views for user authentication, including registration and login.
 """
 
 from django.shortcuts import render, redirect
@@ -9,7 +10,14 @@ from django.contrib.auth.forms import UserCreationForm
 
 
 def signup(request):
-    """Register a new user."""
+    """
+    Register a new user.
+
+    If the request method is POST, validate and save the form data, then authenticate and log in the user.
+    Redirect to the polls index page upon successful registration.
+    If the form is not valid, display errors on the signup page.
+    If the request method is GET, render the signup form.
+    """
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
         if form.is_valid():

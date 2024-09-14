@@ -1,6 +1,5 @@
 """
-Admin module for managing Polls application
-models in the Django admin interface.
+Admin module for managing Polls application models in the Django admin interface.
 
 Registers the following models:
 - Question

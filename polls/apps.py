@@ -13,5 +13,6 @@ class PollsConfig(AppConfig):
 
     Sets the default auto field type and specifies the app name.
     """
+
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'polls'

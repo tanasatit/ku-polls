@@ -20,6 +20,7 @@ class Question(models.Model):
         pub_date (datetime): The date the question was published.
         end_date (datetime): The date the question ends.
     """
+
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField('date published', default=timezone.now)
     end_date = models.DateTimeField('date end', null=True, blank=True)
@@ -69,6 +70,7 @@ class Choice(models.Model):
         question (Question): The question this choice is related to.
         choice_text (str): The text of the choice.
     """
+
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice_text = models.CharField(max_length=200)
     # votes = models.IntegerField(default=0)
@@ -96,6 +98,7 @@ class Vote(models.Model):
         user (User): The user who made the vote.
         choice (Choice): The choice that was voted for.
     """
+
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
 
