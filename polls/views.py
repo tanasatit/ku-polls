@@ -58,6 +58,20 @@ class DetailView(generic.DetailView):
         return Question.objects.filter(pub_date__lte=timezone.localtime())
 
     def get_context_data(self, **kwargs):
+        """
+        Add the previous vote of the authenticated user to the context.
+
+        Retrieves the user's previous choice for the question, if available,
+        and includes it in the context data. Logs debug information about the
+        user's voting status.
+
+        Args:
+            **kwargs: Additional keyword arguments.
+
+        Returns:
+            dict: Context data including 'previous_choice', which is the user's
+                  last selected choice or None if no previous vote is found.
+        """
         context = super().get_context_data(**kwargs)
         question = self.object
         this_user = self.request.user
@@ -86,6 +100,20 @@ class ResultsView(generic.DetailView):
 
 @login_required(login_url='login')
 def vote(request, question_id):
+    """
+    Handle voting for a specific choice in a question.
+
+    Checks if the user is allowed to vote on the specified question.
+    Updates the user's vote if they have already voted, otherwise creates a new vote.
+    Redirects to the results page with a success message or the detail page with an error message.
+
+    Args:
+        request: The HTTP request object containing the vote details.
+        question_id: The ID of the question being voted on.
+
+    Returns:
+        HttpResponseRedirect: Redirects to the results page or back to the detail page with an error message.
+    """
     question = get_object_or_404(Question, pk=question_id)
 
     if not question.can_vote():
@@ -133,6 +161,19 @@ def index(request):
 
 @login_required(login_url='login')
 def detail(request, question_id):
+    """
+    Display the details of a specific question.
+
+    Checks if voting is allowed for the question. If not, redirects to the index page with an error message.
+    Also checks if the user has previously voted on this question and passes the choice to the template.
+
+    Args:
+        request: The HTTP request object.
+        question_id: The ID of the question to be displayed.
+
+    Returns:
+        HttpResponse: Renders the detail page for the specified question.
+    """
     question = get_object_or_404(Question, pk=question_id)
 
     # Check if voting is allowed
@@ -154,6 +195,18 @@ def detail(request, question_id):
 
 
 def results(request, question_id):
+    """
+    Display the results of a specific question.
+
+    Retrieves the vote confirmation from the session and renders the results page for the specified question.
+
+    Args:
+        request: The HTTP request object.
+        question_id: The ID of the question whose results are to be displayed.
+
+    Returns:
+        HttpResponse: Renders the results page for the specified question.
+    """
     question = get_object_or_404(Question, pk=question_id)
 
     # Retrieve the vote confirmation from the session
