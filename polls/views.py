@@ -55,9 +55,26 @@ class DetailView(generic.DetailView):
 
     def get_queryset(self):
         """Exclude questions that aren't published yet."""
-        return Question.objects.filter(
-            pub_date__lte=timezone.localtime()
-        )
+        return Question.objects.filter(pub_date__lte=timezone.localtime())
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        question = self.object
+        this_user = self.request.user
+
+        if this_user.is_authenticated:
+            try:
+                previous_vote = Vote.objects.get(user=this_user, choice__question=question)
+                context['previous_choice'] = previous_vote.choice
+                logger.debug(f"Previous choice for user {this_user.username}: {previous_vote.choice.choice_text}")
+            except Vote.DoesNotExist:
+                context['previous_choice'] = None
+                logger.debug(f"No previous vote found for user {this_user.username}")
+        else:
+            context['previous_choice'] = None
+            logger.debug("User is not authenticated.")
+
+        return context
 
 
 class ResultsView(generic.DetailView):
@@ -89,17 +106,20 @@ def vote(request, question_id):
             'error_message': "Invalid choice selected.",
         })
 
-    # Update or create the vote
-    Vote.objects.update_or_create(
-        user=request.user,
-        choice__question=question,
-        defaults={'choice': selected_choice}
-    )
+    # Check if the user has already voted
+    previous_vote = Vote.objects.filter(user=request.user, choice__question=question).first()
+    if previous_vote:
+        # If the user has voted before, update the vote
+        previous_vote.choice = selected_choice
+        previous_vote.save()
+    else:
+        # Create a new vote
+        Vote.objects.create(user=request.user, choice=selected_choice)
 
     # Add the message
     messages.success(request, f"Your vote for {selected_choice.choice_text} has been recorded.")
 
-    return redirect('polls:results', pk=question.id)
+    return redirect('polls:results', question.id)
 
 
 def index(request):
@@ -111,13 +131,8 @@ def index(request):
     return render(request, 'polls/index.html', context)
 
 
+@login_required(login_url='login')
 def detail(request, question_id):
-    """
-    Display details of a specific question.
-
-    Redirect to the index page with an error message if voting is not allowed.
-    If the user has previously voted, pass the selected choice to the template.
-    """
     question = get_object_or_404(Question, pk=question_id)
 
     # Check if voting is allowed
@@ -134,7 +149,7 @@ def detail(request, question_id):
 
     return render(request, 'polls/detail.html', {
         'question': question,
-        'previous_vote': previous_vote,
+        'previous_choice': previous_vote.choice if previous_vote else None,
     })
 
 
