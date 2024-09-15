@@ -4,20 +4,30 @@
 
 {% block content %}
 <div class="poll-box">
-    <h1>{{ question.question_text }}</h1>
+    <h1 class="question-title">{{ question.question_text }}</h1>
     
-    <form action="{% url 'polls:vote' question.id %}" method="post">
+    {% if error_message %}
+        <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+    <form action="{% url 'polls:vote' question.id %}" method="post" class="poll-form">
         {% csrf_token %}
         <fieldset>
-            {% if error_message %}
-                <p class="error-message"><strong>{{ error_message }}</strong></p>
-            {% endif %}
+{#            {% for choice in question.choice_set.all %}#}
+{#                <div class="choice-container">#}
+{#                    <input type="radio" name="choice" id="choice{{ choice.id }}" value="{{ choice.id }}"#}
+{#                           class="choice-radio"#}
+{#                           {% if previous_vote and previous_vote.choice.id == choice.id %}checked{% endif %}>#}
+{#                    <label for="choice{{ choice.id }}">{{ choice.choice_text }}</label>#}
+{#                </div>#}
+{#            {% endfor %}#}
             {% for choice in question.choice_set.all %}
                 <div class="choice-container">
-                    <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-                    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+                    <input type="radio" name="choice" id="choice{{ choice.id }}" value="{{ choice.id }}"
+                           class="choice-radio"
+                           {% if previous_choice and previous_choice.id == choice.id %}checked{% endif %}>
+                    <label for="choice{{ choice.id }}">{{ choice.choice_text }}</label>
                 </div>
-            {% endfor %}
+            {% endfor %}            
         </fieldset>
         <div class="button-container">
             <input type="submit" value="Submit" class="button">

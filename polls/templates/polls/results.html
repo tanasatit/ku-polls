@@ -4,6 +4,14 @@
 
 {% block content %}
     <div class="poll-box">
+        {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                    <div class="alert {{ message.tags }}">{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
         <h1>{{ question.question_text }}</h1>
         <table class="results-table">
             <thead>
@@ -21,7 +29,7 @@
                 {% endfor %}
             </tbody>
         </table>
-        
+
         <div class="button-container">
             {% if question.can_vote %}
                 <a href="{% url 'polls:detail' question.id %}" class="button">Vote Again</a>
@@ -30,3 +38,4 @@
         </div>
     </div>
 {% endblock %}
+
