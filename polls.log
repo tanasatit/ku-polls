@@ -84,3 +84,73 @@ INFO 2024-09-14 17:41:15,362 views harry logged out from 127.0.0.1
 INFO 2024-09-14 17:50:56,024 views friend logged in from 127.0.0.1
 INFO 2024-09-14 17:51:07,629 views friend logged out from 127.0.0.1
 INFO 2024-09-14 18:18:43,106 views admin logged in from 127.0.0.1
+WARNING 2024-09-14 21:01:09,888 views Failed login for admin from 127.0.0.1
+WARNING 2024-09-14 21:01:12,268 views Failed login for admin from 127.0.0.1
+WARNING 2024-09-14 21:01:35,236 views Failed login for admin from 127.0.0.1
+WARNING 2024-09-14 21:01:36,771 views Failed login for admin from 127.0.0.1
+WARNING 2024-09-14 21:01:54,790 views Failed login for admin from 127.0.0.1
+WARNING 2024-09-14 21:03:52,918 views Failed login for admin from 127.0.0.1
+WARNING 2024-09-14 21:04:31,848 views Failed login for admin from 127.0.0.1
+INFO 2024-09-14 21:04:43,312 views demo1 logged in from 127.0.0.1
+WARNING 2024-09-14 21:04:46,643 views Failed login for admin from 127.0.0.1
+INFO 2024-09-14 21:04:50,383 views demo1 logged out from 127.0.0.1
+INFO 2024-09-14 21:05:04,575 views harry logged in from 127.0.0.1
+INFO 2024-09-14 21:05:36,726 views harry logged out from 127.0.0.1
+WARNING 2024-09-14 21:05:40,138 views Failed login for admin from 127.0.0.1
+WARNING 2024-09-14 21:05:49,483 views Failed login for admin from 127.0.0.1
+INFO 2024-09-14 21:06:01,754 views admin logged in from 127.0.0.1
+WARNING 2024-09-14 21:14:22,392 views Failed login for admin from 127.0.0.1
+INFO 2024-09-14 21:29:53,265 views admin logged in from 127.0.0.1
+INFO 2024-09-14 21:38:06,271 views admin logged out from 127.0.0.1
+WARNING 2024-09-14 21:38:18,393 views Failed login for tai from 127.0.0.1
+WARNING 2024-09-14 21:38:29,494 views Failed login for admin from 127.0.0.1
+INFO 2024-09-14 21:38:37,982 views admin logged in from 127.0.0.1
+INFO 2024-09-15 14:48:01,129 views admin logged in from 127.0.0.1
+INFO 2024-09-15 14:55:50,197 views admin logged out from 127.0.0.1
+INFO 2024-09-15 14:57:45,909 views admin logged in from 127.0.0.1
+INFO 2024-09-15 15:00:24,418 views admin logged out from 127.0.0.1
+INFO 2024-09-15 15:00:27,019 views admin logged in from 127.0.0.1
+INFO 2024-09-15 15:00:52,925 views admin logged out from 127.0.0.1
+INFO 2024-09-15 15:14:29,410 views admin logged in from 127.0.0.1
+INFO 2024-09-15 15:15:13,700 views admin logged out from 127.0.0.1
+INFO 2024-09-15 15:15:24,642 views admin logged in from 127.0.0.1
+INFO 2024-09-15 15:24:49,596 views admin logged out from 127.0.0.1
+INFO 2024-09-15 15:24:57,057 views admin logged in from 127.0.0.1
+INFO 2024-09-15 15:25:19,487 views admin logged out from 127.0.0.1
+INFO 2024-09-15 15:25:22,373 views admin logged in from 127.0.0.1
+INFO 2024-09-15 15:27:30,551 views admin logged out from 127.0.0.1
+INFO 2024-09-15 15:27:32,981 views admin logged in from 127.0.0.1
+INFO 2024-09-15 15:34:16,750 views admin logged out from 127.0.0.1
+INFO 2024-09-15 15:34:18,529 views admin logged in from 127.0.0.1
+INFO 2024-09-15 15:54:46,256 views admin logged out from 127.0.0.1
+INFO 2024-09-15 15:54:48,582 views admin logged in from 127.0.0.1
+INFO 2024-09-15 16:12:57,970 views admin logged out from 127.0.0.1
+INFO 2024-09-15 16:13:07,554 views demo1 logged in from 127.0.0.1
+INFO 2024-09-15 16:20:34,873 views demo1 logged out from 127.0.0.1
+INFO 2024-09-15 16:20:37,867 views admin logged in from 127.0.0.1
+INFO 2024-09-15 16:29:49,132 views admin logged out from 127.0.0.1
+INFO 2024-09-15 16:29:54,378 views admin logged in from 127.0.0.1
+INFO 2024-09-15 16:34:02,025 views admin logged out from 127.0.0.1
+INFO 2024-09-15 16:34:04,896 views admin logged in from 127.0.0.1
+INFO 2024-09-15 16:38:18,509 views demo1 logged in from 127.0.0.1
+INFO 2024-09-15 16:38:27,774 views demo1 logged out from 127.0.0.1
+INFO 2024-09-15 16:40:46,798 views admin logged out from 127.0.0.1
+INFO 2024-09-15 16:40:49,003 views admin logged in from 127.0.0.1
+INFO 2024-09-15 16:41:14,583 views admin logged out from 127.0.0.1
+INFO 2024-09-15 16:41:29,192 views admin logged in from 127.0.0.1
+INFO 2024-09-15 16:41:43,277 views admin logged out from 127.0.0.1
+INFO 2024-09-15 16:42:31,592 views admin logged in from 127.0.0.1
+DEBUG 2024-09-15 16:44:40,629 views Previous choice for user admin: Workshops/Seminars
+DEBUG 2024-09-15 16:44:43,325 views Previous choice for user admin: Workshops/Seminars
+DEBUG 2024-09-15 16:45:39,038 views Previous choice for user admin: Workshops/Seminars
+DEBUG 2024-09-15 16:52:26,492 views Previous choice for user admin: Workshops/Seminars
+DEBUG 2024-09-15 16:52:31,025 views Previous choice for user admin: Workshops/Seminars
+DEBUG 2024-09-15 16:52:35,532 views Previous choice for user admin: Books and Reading
+DEBUG 2024-09-15 16:52:41,011 views Previous choice for user admin: Books and Reading
+INFO 2024-09-15 16:52:43,706 views admin logged out from 127.0.0.1
+DEBUG 2024-09-15 16:52:44,991 views User is not authenticated.
+INFO 2024-09-15 16:52:47,393 views admin logged in from 127.0.0.1
+DEBUG 2024-09-15 16:52:47,399 views Previous choice for user admin: Books and Reading
+INFO 2024-09-15 17:24:02,630 views admin logged out from 127.0.0.1
+INFO 2024-09-15 17:45:15,236 views admin logged in from 127.0.0.1
+INFO 2024-09-15 17:46:19,862 views admin logged in from 127.0.0.1
