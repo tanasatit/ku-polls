@@ -20,7 +20,9 @@
                 <button type="submit">Log Out</button>
             </form>
         {% else %}
-            <p>Please <a href="{% url 'login' %}?next={{ request.path }}">Login</a></p>
+            {% if request.resolver_match.url_name != 'login' and request.resolver_match.url_name != 'signup' %}
+                <p>Please <a href="{% url 'login' %}?next={{ request.path }}">Login</a></p>
+            {% endif %}
         {% endif %}
 
         <!-- Content Block -->
@@ -29,5 +31,3 @@
     </div>
 </body>
 </html>
-
-
