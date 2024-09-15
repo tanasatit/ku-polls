@@ -69,21 +69,13 @@ class ResultsView(generic.DetailView):
 
 @login_required(login_url='login')
 def vote(request, question_id):
-    """
-    Handle the voting for a specific question.
-
-    If voting is allowed, update or create a Vote record. Redirect to the results page.
-    If no choice is selected or the choice is invalid, display an error message.
-    """
     question = get_object_or_404(Question, pk=question_id)
 
     if not question.can_vote():
         return redirect('polls:index')
 
-    # Get the selected choice
     choice_id = request.POST.get('choice')
     if not choice_id:
-        # Pass an error message as context
         return render(request, 'polls/detail.html', {
             'question': question,
             'error_message': "You didn't select a choice.",
@@ -97,11 +89,15 @@ def vote(request, question_id):
             'error_message': "Invalid choice selected.",
         })
 
+    # Update or create the vote
     Vote.objects.update_or_create(
         user=request.user,
         choice__question=question,
         defaults={'choice': selected_choice}
     )
+
+    # Add the message
+    messages.success(request, f"Your vote for {selected_choice.choice_text} has been recorded.")
 
     return redirect('polls:results', pk=question.id)
 
@@ -143,9 +139,15 @@ def detail(request, question_id):
 
 
 def results(request, question_id):
-    """Display the results of a specific question."""
     question = get_object_or_404(Question, pk=question_id)
-    return render(request, 'polls/results.html', {'question': question})
+
+    # Retrieve the vote confirmation from the session
+    voted_choice = request.session.get(f'voted_for_{question.id}', None)
+
+    return render(request, 'polls/results.html', {
+        'question': question,
+        'voted_choice': voted_choice,  # Pass the voted choice to the template
+    })
 
 
 logger = logging.getLogger("polls")
