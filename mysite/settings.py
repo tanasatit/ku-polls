@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 import os
 from pathlib import Path
-from decouple import config, Csv
+from decouple import config
 import logging
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -72,7 +72,7 @@ DATABASES = {
         "NAME": config("DATABASE_NAME", default="pollsdb"),
         "USER": config("DATABASE_USER", default="pollsapp"),
         "PASSWORD": config("DATABASE_PASSWORD", default="password"),
-        "HOST": config("DATABASE_HOST", default="localhost"),
+        "HOST": config("DATABASE_HOST", default="db"),
         "PORT": config("DATABASE_PORT", default="5432")
     }
 }
