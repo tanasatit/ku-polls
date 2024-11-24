@@ -154,3 +154,43 @@ DEBUG 2024-09-15 16:52:47,399 views Previous choice for user admin: Books and Re
 INFO 2024-09-15 17:24:02,630 views admin logged out from 127.0.0.1
 INFO 2024-09-15 17:45:15,236 views admin logged in from 127.0.0.1
 INFO 2024-09-15 17:46:19,862 views admin logged in from 127.0.0.1
+DEBUG 2024-09-28 23:32:15,504 views User is not authenticated.
+DEBUG 2024-09-28 23:32:25,045 views User is not authenticated.
+INFO 2024-09-28 23:33:00,108 views a logged in from 127.0.0.1
+INFO 2024-09-28 23:33:13,917 views a logged out from 127.0.0.1
+DEBUG 2024-09-28 23:33:28,441 views User is not authenticated.
+INFO 2024-09-28 23:33:44,840 views demo1 logged in from 127.0.0.1
+DEBUG 2024-09-28 23:34:19,904 views No previous vote found for user demo1
+DEBUG 2024-09-28 23:34:22,919 views No previous vote found for user demo1
+DEBUG 2024-09-28 23:34:28,375 views Previous choice for user demo1: Hands-On Practice
+DEBUG 2024-09-28 23:34:32,907 views Previous choice for user demo1: Hands-On Practice
+WARNING 2024-10-01 09:21:12,887 views Failed login for tanasatit from 127.0.0.1
+DEBUG 2024-10-06 22:38:06,584 views User is not authenticated.
+WARNING 2024-10-06 22:38:40,135 views Failed login for demo1 from 127.0.0.1
+INFO 2024-10-06 22:38:44,156 views demo1 logged in from 127.0.0.1
+DEBUG 2024-10-06 22:38:47,963 views Previous choice for user demo1: Jazz
+DEBUG 2024-10-06 22:38:52,092 views Previous choice for user demo1: Jazz
+DEBUG 2024-10-06 22:38:57,928 views Previous choice for user demo1: Hands-On Practice
+INFO 2024-10-06 22:39:15,820 views demo1 logged out from 127.0.0.1
+DEBUG 2024-10-13 17:54:47,731 views User is not authenticated.
+WARNING 2024-10-13 17:54:50,758 views Failed login for demo1 from 127.0.0.1
+WARNING 2024-10-13 17:54:52,277 views Failed login for demo1 from 127.0.0.1
+INFO 2024-10-13 17:54:54,305 views demo1 logged in from 127.0.0.1
+INFO 2024-10-13 17:55:12,563 views demo1 logged out from 127.0.0.1
+INFO 2024-10-13 18:52:31,585 views testuser logged in from 127.0.0.1
+INFO 2024-10-13 18:52:31,905 views testuser logged in from None
+INFO 2024-10-13 18:52:31,906 views testuser logged out from 127.0.0.1
+DEBUG 2024-10-13 18:52:31,914 views User is not authenticated.
+INFO 2024-10-13 19:04:19,503 views testuser logged in from 127.0.0.1
+INFO 2024-10-13 19:04:19,837 views testuser logged in from None
+INFO 2024-10-13 19:04:19,838 views testuser logged out from 127.0.0.1
+DEBUG 2024-10-13 19:04:41,377 views User is not authenticated.
+DEBUG 2024-11-18 14:35:46,330 views User is not authenticated.
+INFO 2024-11-18 14:35:51,844 views demo1 logged in from 127.0.0.1
+DEBUG 2024-11-18 14:36:46,298 views No previous vote found for user demo1
+DEBUG 2024-11-18 14:36:56,204 views Previous choice for user demo1: Python
+DEBUG 2024-11-18 14:38:19,315 views No previous vote found for user demo1
+DEBUG 2024-11-18 14:38:27,872 views Previous choice for user demo1: Walking
+DEBUG 2024-11-19 13:51:26,667 views Previous choice for user demo1: Hands-On Practice
+INFO 2024-11-19 13:51:30,349 views demo1 logged out from 127.0.0.1
+INFO 2024-11-19 13:51:32,715 views demo1 logged in from 127.0.0.1
