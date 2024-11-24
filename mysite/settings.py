@@ -70,8 +70,8 @@ DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": config("DATABASE_NAME", default="pollsdb"),
-        "USER": config("DATABASE_USER", default="pollsapp"),
-        "PASSWORD": config("DATABASE_PASSWORD", default="password"),
+        "USER": config("DATABASE_USER", default="admin"),
+        "PASSWORD": config("DATABASE_PASSWORD", default="adminpassword"),
         "HOST": config("DATABASE_HOST", default="db"),
         "PORT": config("DATABASE_PORT", default="5432")
     }
